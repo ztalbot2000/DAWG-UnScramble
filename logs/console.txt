@@ -1,0 +1,159 @@
+The main Debug Level 1 function lives
+ThisLine is |000172823|
+FirstLineIsSize is |172823|
+Lexicon.txt read 172826 lines completed
+
+Warning, First Line in dictionary file does not match counted number of lines in file 172826 != 172823. Using counted value of 172826.
+
+Initial malloc() complete
+The Dawg init function will now be run, so be patient, it will take some time to complete.
+
+ ****** DICTIONARY ******
+
+
+
+Step 1 - Create the intermediate Trie and begin filling it with the provided lexicon.
+
+ ****** ORIGINAL TRIE TREE ******
+
+
+
+Step 2 - Finished adding words to the temporary Trie, so set up the space to sort the Tnodes by Word Lengths.
+
+Step 3 - Count the total number of nodes in the raw Trie by MaxChildDepth.
+
+Step 4 - Initial counting of Trie nodes complete, so display the results.
+
+Initial Count For Words of Size | 0| is |111510| nodes
+Initial Count For Words of Size | 1| is | 78122| nodes
+Initial Count For Words of Size | 2| is | 55949| nodes
+Initial Count For Words of Size | 3| is | 40175| nodes
+Initial Count For Words of Size | 4| is | 29918| nodes
+Initial Count For Words of Size | 5| is | 21714| nodes
+Initial Count For Words of Size | 6| is | 15831| nodes
+Initial Count For Words of Size | 7| is | 11140| nodes
+Initial Count For Words of Size | 8| is |  7881| nodes
+Initial Count For Words of Size | 9| is |  5461| nodes
+Initial Count For Words of Size |10| is |  3783| nodes
+Initial Count For Words of Size |11| is |  2487| nodes
+Initial Count For Words of Size |12| is |  1593| nodes
+Initial Count For Words of Size |13| is |   967| nodes
+Initial Count For Words of Size |14| is |   557| nodes
+Initial Count For Words of Size |15| is |   327| nodes
+Initial Count For Words of Size |16| is |   190| nodes
+Initial Count For Words of Size |17| is |   108| nodes
+Initial Count For Words of Size |18| is |    69| nodes
+Initial Count For Words of Size |19| is |    41| nodes
+Initial Count For Words of Size |20| is |    24| nodes
+Initial Count For Words of Size |21| is |    16| nodes
+Initial Count For Words of Size |22| is |    12| nodes
+Initial Count For Words of Size |23| is |     7| nodes
+Initial Count For Words of Size |24| is |     4| nodes
+Initial Count For Words of Size |25| is |     2| nodes
+Initial Count For Words of Size |26| is |     1| nodes
+Initial Count For Words of Size |27| is |     1| nodes
+Initial Count For Words of Size |28| is |     0| nodes
+
+The Total Number Of Nodes In The Trie = |387890| 
+
+Step 5 - Allocate a 2 dimensional array of Tnode pointers to minimize the trie into a Dawg.
+
+Step 6 - Init the 2 dimensional array of Trie node pointers.
+Completed Populating The Reduction Array.
+
+Step 7 - Population complete.
+
+Step 8 - Begin to tag redundant nodes as dangled - Use recursion because only direct children are considered for elimination to keep the remaining lists in tact.
+This may take a while ...
+Dangled |    0| Nodes In all, through recursion, for words of length |27|
+Dangled |    0| Nodes In all, through recursion, for words of length |26|
+Dangled |    0| Nodes In all, through recursion, for words of length |25|
+Dangled |    0| Nodes In all, through recursion, for words of length |24|
+Dangled |    0| Nodes In all, through recursion, for words of length |23|
+Dangled |    0| Nodes In all, through recursion, for words of length |22|
+Dangled |    0| Nodes In all, through recursion, for words of length |21|
+Dangled |    0| Nodes In all, through recursion, for words of length |20|
+Dangled |    0| Nodes In all, through recursion, for words of length |19|
+Dangled |    0| Nodes In all, through recursion, for words of length |18|
+Dangled |    0| Nodes In all, through recursion, for words of length |17|
+Dangled |    0| Nodes In all, through recursion, for words of length |16|
+Dangled |    0| Nodes In all, through recursion, for words of length |15|
+Dangled |    0| Nodes In all, through recursion, for words of length |14|
+Dangled |    0| Nodes In all, through recursion, for words of length |13|
+Dangled |   91| Nodes In all, through recursion, for words of length |12|
+Dangled |  561| Nodes In all, through recursion, for words of length |11|
+Dangled | 1744| Nodes In all, through recursion, for words of length |10|
+Dangled | 3850| Nodes In all, through recursion, for words of length | 9|
+Dangled | 8346| Nodes In all, through recursion, for words of length | 8|
+Dangled |14726| Nodes In all, through recursion, for words of length | 7|
+Dangled |19459| Nodes In all, through recursion, for words of length | 6|
+Dangled |25987| Nodes In all, through recursion, for words of length | 5|
+Dangled |38216| Nodes In all, through recursion, for words of length | 4|
+Dangled |47583| Nodes In all, through recursion, for words of length | 3|
+Dangled |48605| Nodes In all, through recursion, for words of length | 2|
+Dangled |41143| Nodes In all, through recursion, for words of length | 1|
+Dangled |18308| Nodes In all, through recursion, for words of length | 0|
+
+Total Number Of Dangled Nodes |268619|
+
+Total Number Of Living Nodes |119271|
+
+Step 9 - Count the number of living nodes in the trie before replacement so that we check our numbers.
+Count for living nodes of MaxChildDepth | 0| is | 9903|. It used to be |111510| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 1| is | 9219|. It used to be | 78122| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 2| is |13316|. It used to be | 55949| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 3| is |15526|. It used to be | 40175| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 4| is |15920|. It used to be | 29918| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 5| is |13711|. It used to be | 21714| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 6| is |11263|. It used to be | 15831| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 7| is | 8631|. It used to be | 11140| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 8| is | 6769|. It used to be |  7881| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth | 9| is | 5029|. It used to be |  5461| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |10| is | 3626|. It used to be |  3783| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |11| is | 2445|. It used to be |  2487| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |12| is | 1587|. It used to be |  1593| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |13| is |  967|. It used to be |   967| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |14| is |  557|. It used to be |   557| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |15| is |  327|. It used to be |   327| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |16| is |  190|. It used to be |   190| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |17| is |  108|. It used to be |   108| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |18| is |   69|. It used to be |    69| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |19| is |   41|. It used to be |    41| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |20| is |   24|. It used to be |    24| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |21| is |   16|. It used to be |    16| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |22| is |   12|. It used to be |    12| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |23| is |    7|. It used to be |     7| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |24| is |    4|. It used to be |     4| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |25| is |    2|. It used to be |     2| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |26| is |    1|. It used to be |     1| and so the number dangled is |     0| 
+Count for living nodes of MaxChildDepth |27| is |    1|. It used to be |     1| and so the number dangled is |     0| 
+The total number of nodes dangled 268619 adds up.
+
+ ****** HolderOfAllTnodePointers AFTER DANGLING ******
+
+
+
+Step 10 - Dangling is complete, so replace all dangled nodes with their first mexican equivelant in the Trie to make a compressed Dawg.
+
+ ****** Mowed TREE ******
+
+
+
+- Mowing of the lawn is now complete, so start to assign array indices to all living nodes.
+Step 12 - The use of a breadth first queue during this step ensures that lists of contiguous nodes in the array will eliminate the need for a Next pointer.
+
+Completed Assigning Indices To Living Nodes.
+Finished indexing.
+NumberOfLivingNodes from after the dangling process|119271|
+The numbers add up properly once again.
+
+Step 13 - Populate the unsigned integer array with a bitwise encoding.
+IndexFollower, which is the largest index assigned in the array = |119271|
+NumberOfLivingNodesAfterDangling|119271|, assert that these two are equal because they must be.
+The numbers add up again, excellent!
+
+Creation of traditional Dawg is complete,
+
+Step 14 - Store it into a 32-bit binary file for use.
+Completed 32 bit traditional data binary output.
+Program ended with exit code: 0
