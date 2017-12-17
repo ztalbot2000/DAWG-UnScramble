@@ -6,7 +6,7 @@ About the Tool Set
 ---------------------
 DAWG-UnScramble is a complete tool set with a speedy 'C' word list pre-processor and an HTML/JavaScript front end.  The main emphasis is on the pre-processor, it is not only capable of creating a DAWG, but also reversing the DAWG back into the original word list.
 
-The HTML/Javascript front end has only been tested on Safari and a working copy can be found at <a href="http://BeNiceGames.com/Tools/UnScramble/Unscramble.html">http://BeNiceGames.com/Tools/UnScramble/Unscramble.html </a> http://BeNiceGames.com/Tools/UnScramble/Unscramble.html (No Ads).</a>
+The HTML/Javascript front end has only been tested on Safari and a working copy can be found at <a href="http://BeNiceGames.com/Tools/UnScramble/Unscramble.html">Unscramble (No Ads) </a>
 
 
 
@@ -19,13 +19,13 @@ How to use the DAWG Pre-Processor
 Installation
 ------------
 The files should be placed on your Web server in the following configuration.
-
-javascript/Bin_FileReader.js
-javascript/jquery-1.12.1.min.js
-javascript/UnScramble.js
-DAWG_SOWPODS.English.dat
-UnScramble.html
-
+<BR>
+javascript/Bin_FileReader.js<BR>
+javascript/jquery-1.12.1.min.js<BR>
+javascript/UnScramble.js<BR>
+DAWG_SOWPODS.English.dat<BR>
+UnScramble.html<BR>
+<BR>
 ## Screenshots
 
 
