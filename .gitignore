@@ -1,0 +1,7 @@
+.DS_Store
+*.swp
+*.save*
+*.[0-9]
+node_modules
+*.try
+
