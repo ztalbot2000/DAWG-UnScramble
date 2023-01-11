@@ -1,4 +1,22 @@
-import { BinFileReader } from "./BinFileReader"
+/**
+ * UnScramble.js
+ *
+ * Copyright (c) 2023 John Talbot <ztalbot2000@gmail.com>
+ * The source code is freely distributable under the terms of an MIT license.
+ *
+ *    Javascript routine to descern what words are available from a given set
+ *    of characters.
+ *
+ *    The real cheese is in the pre-processed list of words that form a binary
+ *    file containing a DAWG "Directed Acyclic Word Graph". See UnScramble.c
+ *    for details.
+ *
+ *    For Modern Web Browsers, you cannot directly include the binary data dictionary
+ *    and so it is pre-processed into a base64 encoded file that base64ToBinReader.js
+ *    decodes.
+ */
+
+import { base64ToBinReader } from "./base64ToBinReader.js"
 (function()
 {
 
@@ -38,15 +56,20 @@ _OBJECT_ROOT_.UnScramble.Core.Dictionary = (function()
          {
             if (lang == "French")
             {
-               this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
+               this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                this.MaxWordLength = 28;
-               this.DAWGReader = new BinFileReader("datafiles/DAWG_ODS5_French.dat");
+               this.DAWGReader = new Bin64Reader("datafiles/DAWG_ODS5_French.dat");
                this.DAWGReader.movePointerTo(0);
             } else
             {
-               this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
+               this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                this.MaxWordLength = 28;
-               this.DAWGReader = new BinFileReader("datafiles/DAWG_SOWPODS_English.dat");
+               // data64Dict is included from
+               // <SCRIPT TYPE="text/javascript"
+               //         SRC="datafiles/DAWG_SOWPODS_English_dat64.js"></SCRIPT>
+               // which contains
+               //    var base64Dict="with the base64 data";
+               this.DAWGReader = new base64ToBinReader( base64Dict );
                this.DAWGReader.movePointerTo(0);
             }
          }

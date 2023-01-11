@@ -58,7 +58,7 @@ let devServerOptions =
 
 module.exports = (env, argv) =>
 {
-   console.log("Processing argv");
+   console.log("Processing webpack build");
 
    // The default 'mode' to use.
    Mode='production';
