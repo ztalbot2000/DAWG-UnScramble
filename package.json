@@ -7,6 +7,8 @@
     "eslint": "eslint  --ext .js src/js/UnScramble.js src/js/Base64ToBinReader.js",
     "clint": "lint  src/c/unscramble.c",
     "lint": "npm run eslint && npm run clint",
+    "devServer:Chrome": "webpack serve --open-app-name \"Google Chrome\"",
+    "devServer:Firefox": "webpack serve --open-app-name \"Firefox\"",
     "devServer": "webpack serve  ",
     "start": "npm run devServer",
     "build:prod": "webpack --mode production",
@@ -17,9 +19,7 @@
     "build:all": "npm run cbuild && npm run build:SOWPODS_E && npm run build:dat64_E && npm run build",
     "build": "npm run build:dev",
     "watch": "webpack --mode development --watch",
-    "startBuild": "npm run watch",
-    "predist": "npm run build:prod && npm run test",
-    "trym": "webpack serve --open \"Chrome\""
+    "startBuild": "npm run watch"
   },
   "repository": {
     "type": "git",

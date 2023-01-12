@@ -1,16 +1,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/base64ToBinReader.js":
+/***/ "./src/js/Base64ToBinReader.js":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "base64ToBinReader": () => (/* binding */ base64ToBinReader)
+/* harmony export */   "Base64ToBinReader": () => (/* binding */ Base64ToBinReader)
 /* harmony export */ });
 /**
- * base64ToBinReader.js
+ * Base64ToBinReader.js
  *
  * Copyright (c) 2023 John Talbot <ztalbot2000@gmail.com>
  * The source code is freely distributable under the terms of an MIT license.
@@ -29,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var Buffer = (__webpack_require__("./node_modules/buffer/index.js").Buffer);
-function base64ToBinReader(binData64) {
+function Base64ToBinReader(binData64) {
   var filePointer = 0;
   var fileSize = -1;
   var fileContents;
@@ -72,23 +72,17 @@ function base64ToBinReader(binData64) {
     }
     return result;
   };
-  function Bin64ReaderImpl(binData64) {
+  function Base64ToBinReaderImpl(binData64) {
     fileContents = binData64;
     fileSize = fileContents.length;
     this.readByteAt = function (i) {
       return fileContents.charCodeAt(i) & 0xff;
     };
   }
-  function base64ToBinData(data) {
-    // convert the data to a Buffer object
-    const buff = Buffer.from(data, 'base64').toString("binary");
-    // Buffer object to a Blob (Binary large object)
-    return new Blob([buff]);
-  }
 
   // Convert the base64 encoded dictionary to a binary array
-  let binData = base64ToBinData(base64Dict);
-  Bin64ReaderImpl.apply(this, [binData]);
+  let binData = Buffer.from(base64Dict, 'base64').toString("binary");
+  Base64ToBinReaderImpl.apply(this, [binData]);
 }
 
 /***/ }),
@@ -2518,7 +2512,7 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _base64ToBinReader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/js/base64ToBinReader.js");
+/* harmony import */ var _Base64ToBinReader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/js/Base64ToBinReader.js");
 /**
  * UnScramble.js
  *
@@ -2565,7 +2559,9 @@ __webpack_require__.r(__webpack_exports__);
       if (lang == "French") {
         this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         this.MaxWordLength = 28;
-        this.DAWGReader = new Bin64Reader("datafiles/DAWG_ODS5_French.dat");
+        // We do not have a French dictionay, so just use the English
+        // one since UnScramble.html does not do French anyway
+        this.DAWGReader = new _Base64ToBinReader_js__WEBPACK_IMPORTED_MODULE_0__.Base64ToBinReader(base64Dict);
         this.DAWGReader.movePointerTo(0);
       } else {
         this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -2575,7 +2571,7 @@ __webpack_require__.r(__webpack_exports__);
         //         SRC="datafiles/DAWG_SOWPODS_English_dat64.js"></SCRIPT>
         // which contains
         //    var base64Dict="with the base64 data";
-        this.DAWGReader = new _base64ToBinReader_js__WEBPACK_IMPORTED_MODULE_0__.base64ToBinReader(base64Dict);
+        this.DAWGReader = new _Base64ToBinReader_js__WEBPACK_IMPORTED_MODULE_0__.Base64ToBinReader(base64Dict);
         this.DAWGReader.movePointerTo(0);
       }
     };

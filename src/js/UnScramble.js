@@ -16,7 +16,7 @@
  *    decodes.
  */
 
-import { base64ToBinReader } from "./base64ToBinReader.js"
+import { Base64ToBinReader } from "./Base64ToBinReader.js"
 (function()
 {
 
@@ -58,7 +58,9 @@ _OBJECT_ROOT_.UnScramble.Core.Dictionary = (function()
             {
                this.IndexedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                this.MaxWordLength = 28;
-               this.DAWGReader = new Bin64Reader("datafiles/DAWG_ODS5_French.dat");
+               // We do not have a French dictionay, so just use the English
+               // one since UnScramble.html does not do French anyway
+               this.DAWGReader = new Base64ToBinReader( base64Dict );
                this.DAWGReader.movePointerTo(0);
             } else
             {
@@ -69,7 +71,7 @@ _OBJECT_ROOT_.UnScramble.Core.Dictionary = (function()
                //         SRC="datafiles/DAWG_SOWPODS_English_dat64.js"></SCRIPT>
                // which contains
                //    var base64Dict="with the base64 data";
-               this.DAWGReader = new base64ToBinReader( base64Dict );
+               this.DAWGReader = new Base64ToBinReader( base64Dict );
                this.DAWGReader.movePointerTo(0);
             }
          }

@@ -1,5 +1,5 @@
 /**
- * base64ToBinReader.js
+ * Base64ToBinReader.js
  *
  * Copyright (c) 2023 John Talbot <ztalbot2000@gmail.com>
  * The source code is freely distributable under the terms of an MIT license.
@@ -19,7 +19,7 @@
 
 var Buffer = require('buffer/').Buffer;
 
-export function base64ToBinReader( binData64 )
+export function Base64ToBinReader( binData64 )
 {
    var filePointer = 0;
    var fileSize = -1;
@@ -92,7 +92,7 @@ export function base64ToBinReader( binData64 )
       return result;
    };
 
-   function Bin64ReaderImpl( binData64 )
+   function Base64ToBinReaderImpl( binData64 )
    {
       fileContents = binData64;
 
@@ -104,16 +104,8 @@ export function base64ToBinReader( binData64 )
       }
    }
 
-   function base64ToBinData( data )
-   {
-      // convert the data to a Buffer object
-      const buff = Buffer.from(data, 'base64').toString("binary");
-      // Buffer object to a Blob (Binary large object)
-      return new Blob([ buff ])
-   }
-
    // Convert the base64 encoded dictionary to a binary array
-   let binData = base64ToBinData( base64Dict );
+   let binData = Buffer.from(base64Dict, 'base64').toString("binary");
 
-   Bin64ReaderImpl.apply(this, [ binData ]);
+   Base64ToBinReaderImpl.apply(this, [ binData ]);
 }
