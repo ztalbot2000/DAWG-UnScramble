@@ -614,7 +614,7 @@ window.onload = init;
 
    <DIV ID="must_contain"><INPUT ID="must_contain_field" TYPE="text" ONMOUSEDOWN="clearMustContainField();" VALUE="" SIZE="5" AUTOCAPITALIZE="off" AUTOCORRECT="off" AUTOCOMPLETE="off" PLACEHOLDER="Must Contain" ONKEYUP="upperCaseKeyPress(this);" ONKEYDOWN="if (event.keyCode == 13) { parseInput(); } "></INPUT></DIV>
    <DIV ID="position"><SELECT ID="position_select">
-         <OPTION>blast</OPTION>
+         <OPTION>Loading Dictionary...</OPTION>
       </SELECT></DIV>
 
    <DIV ID="clear_must_contain_field"><INPUT TYPE="button" ID="clear_must_contain_field_button" VALUE="Clear" ONCLICK="clearMustContainField();" ></INPUT></DIV>
