@@ -17,7 +17,7 @@
  *    Then base64Dict gets passed to this function
  */
 
-var Buffer = require('buffer/').Buffer;
+import { Buffer } from 'buffer/';
 
 export function Base64ToBinReader( binData64 )
 {
@@ -105,7 +105,7 @@ export function Base64ToBinReader( binData64 )
    }
 
    // Convert the base64 encoded dictionary to a binary array
-   let binData = Buffer.from(base64Dict, 'base64').toString("binary");
+   let binData = Buffer.from(binData64, 'base64').toString("binary");
 
    Base64ToBinReaderImpl.apply(this, [ binData ]);
 }

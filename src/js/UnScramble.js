@@ -17,6 +17,8 @@
  */
 
 import { Base64ToBinReader } from "./Base64ToBinReader.js"
+// An immediately-invoked function expression (IIFE). This simply means that the
+// function is executed immediately after the completion of the definition.
 (function()
 {
 
@@ -230,12 +232,6 @@ _Dictionary.prototype.DAWG_NextIndex = function(dataIndex)
             return retArray;
          }
 
-         _Dictionary.prototype.FindWildChar = function(theChars)
-         {
-             var n = theChars.indexOf("?");
-         }
-
-
          _Dictionary.prototype.FindAnagrams = function(theChars)
          {
             theChars = theChars.toUpperCase();
@@ -320,17 +316,3 @@ _Dictionary.prototype.DAWG_NextIndex = function(dataIndex)
 
 })();
 // END script-scope
-
-
-
-window_onload = function()
-{
-
-   //with (UnScramble)
-   //{
-      // jslint empty block statement
-
-   //}
-
-};
-

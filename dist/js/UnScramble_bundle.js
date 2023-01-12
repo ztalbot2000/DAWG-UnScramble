@@ -9,6 +9,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Base64ToBinReader": () => (/* binding */ Base64ToBinReader)
 /* harmony export */ });
+/* harmony import */ var buffer___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/buffer/index.js");
 /**
  * Base64ToBinReader.js
  *
@@ -28,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
  *    Then base64Dict gets passed to this function
  */
 
-var Buffer = (__webpack_require__("./node_modules/buffer/index.js").Buffer);
+
 function Base64ToBinReader(binData64) {
   var filePointer = 0;
   var fileSize = -1;
@@ -81,7 +82,7 @@ function Base64ToBinReader(binData64) {
   }
 
   // Convert the base64 encoded dictionary to a binary array
-  let binData = Buffer.from(base64Dict, 'base64').toString("binary");
+  let binData = buffer___WEBPACK_IMPORTED_MODULE_0__.Buffer.from(binData64, 'base64').toString("binary");
   Base64ToBinReaderImpl.apply(this, [binData]);
 }
 
@@ -2532,6 +2533,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+// An immediately-invoked function expression (IIFE). This simply means that the
+// function is executed immediately after the completion of the definition.
 (function () {
   var _OBJECT_ROOT_ = window;
 
@@ -2677,9 +2680,6 @@ __webpack_require__.r(__webpack_exports__);
       }
       return retArray;
     };
-    _Dictionary.prototype.FindWildChar = function (theChars) {
-      var n = theChars.indexOf("?");
-    };
     _Dictionary.prototype.FindAnagrams = function (theChars) {
       theChars = theChars.toUpperCase();
 
@@ -2740,15 +2740,6 @@ __webpack_require__.r(__webpack_exports__);
   // END UnScramble.Core.Dictionary
 })();
 // END script-scope
-
-window_onload = function () {
-
-  //with (UnScramble)
-  //{
-  // jslint empty block statement
-
-  //}
-};
 })();
 
 /******/ })()
