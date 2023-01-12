@@ -1,0 +1,11 @@
+Lexicon_incorrectWordCount.txt will produce a valid DAWG, but gives the warning:
+  Warning, First Line in dictionary file does not match counted number of lines in file 172826 != 172823. Using counted value of 172826.
+-rw-r--r--   1 zarf  staff  1743386  8 Jan 22:48 Lexicon_incorrectWordCount.txt
+
+Lexicon_CorrectWordCount.txt.txt produces a valid DAWG and has the correct first line
+-rw-r--r--   1 zarf  staff  1743370  8 Jan 22:48 Lexicon_CorrectWordCount.txt
+
+Lexixon_Large.txt produces a large DAWG but has some non words in it
+-rw-r--r--   1 zarf  staff  2707021  8 Jan 22:48 Lexixon_Large.txtt
+
+The most recent Lexicon.txt that is used for real is src/datafiles/Lexicon.txt

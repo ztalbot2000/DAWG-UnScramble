@@ -1,0 +1,627 @@
+<!DOCTYPE HTML5 PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML XMLNS="http://www.w3.org/1999/xhtml" LANG="en" XML:LANG="en">
+   <HEAD><TITLE><%= htmlWebpackPlugin.options.title %></TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+   <META HTTP-EQUIV="X-UA-Compatible" CONTENT="IE=edge"/>
+
+   <META NAME="title" CONTENT="UnScramble"/>
+
+   <META NAME="description"
+      CONTENT="A simple tool for unscrambling letters"/>
+   <META NAME="author" CONTENT="John Talbot" />
+   <META NAME="creator" CONTENT="John Talbot" />
+   <META NAME="subject"
+      CONTENT="A simple tool for unscrambling letters"/>
+   <META NAME="Keywords" CONTENT="Ad Free, noads, no, adds, totally free, no money, IOS, iPad, Apple, unscramble letters, unscramble, word game, anagrams"/>
+   <META NAME="viewport" CONTENT="width=device-width"/>
+
+
+
+<STYLE TYPE="text/css">
+
+DIV#title
+{
+   FONT-SIZE: 3em;
+
+   MARGIN: 0;
+   PADDING: 0;
+   TEXT-ALIGN: center;
+   FONT-WEIGHT: bold;
+   LETTER-SPACING: 0.7em;
+   PADDING-LEFT: 0.7em;
+
+   COLOR: #FFFF33; /* Font color - yellowish */
+
+}
+
+BODY
+{
+   FONT-FAMILY: HELVETICA, ARIAL, SANS-SERIF;
+   FONT-SIZE: 100%; /* 100.01% GOOD PRACTICE, BUT WITH 62.5% => 1EM == 10PX (FACTOR OF 10) GENERALLY: 1EM = 12PT = 16PX = 100% */
+
+   MARGIN: 0;
+
+   PADDING: 0;
+   PADDING-TOP: 1em;
+
+   BORDER: none;
+   BACKGROUND-IMAGE: url('images/background.png');
+
+   COLOR: #FFFF33; /* Font color - yellowish */
+}
+
+DIV#letter
+{
+   WIDTH: 30.0px;
+   BACKGROUND-COLOR: red;
+   position: absolute;
+   top: 30.0px;
+   left: 900px;
+   height: 20.0px;
+   z-index: 9999;
+}
+
+DIV#parms
+{
+   WIDTH: 100%;
+   BACKGROUND-COLOR: black;
+   position: absolute;
+   top: 73.0px;
+   left: 0px;
+   height: 110px;
+   z-index: 9999;
+}
+
+#search_field
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 120%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#search
+{   HEIGHT: 30px;
+   WIDTH: 478px;
+   position: absolute;
+   top: 85.0px;
+   left: 52.0px;
+   z-index: 9999;
+}
+
+
+
+
+#parse_button
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 120%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#parse
+{
+   HEIGHT: 35px;
+   WIDTH: 100px;
+   position: absolute;
+   top: 85.0px;
+   left: 555.0px;
+   z-index: 9999;
+}
+
+#clear_search_field_button
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 120%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#clear_search_field
+{
+   HEIGHT: 35px;
+   WIDTH: 100px;
+   position:absolute;
+   top: 85.0px;
+   left: 660.0px;
+   z-index: 9999;
+}
+
+#must_contain_field
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 120%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#must_contain
+{
+   HEIGHT: 30px;
+   WIDTH: 130px;
+   position: absolute;
+   top: 135.0px;
+   left: 190px;
+   z-index: 9999;
+}
+
+
+#clear_must_contain_field_button
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 120%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#clear_must_contain_field
+{
+   HEIGHT: 35px;
+   WIDTH: 100px;
+   position: absolute;
+   top: 135.0px;
+   left: 660.0px;
+   z-index: 9999;
+}
+
+#position_select
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 150%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 100%;
+   WIDTH: 100%;
+}
+
+DIV#position
+{
+   HEIGHT: 40px;
+   WIDTH: 195px;
+
+   position: absolute;
+   top: 135px;
+   left: 355px;
+   z-index: 9999;
+}
+
+#position_select OPTION
+{
+   FONT-FAMILY: ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 150%;
+   COLOR: #00f; /* Font color - blueish */
+   HEIGHT: 200px;
+   WIDTH: 85px;
+   margin-bottom: 20px;
+}
+
+DIV#anagrams CAPTION
+{
+
+   FONT-FAMILY:ARIAL,VERDANA,SANS-SERIF;
+   FONT-SIZE: 100%;
+   COLOR: #FFFF33; /* Font color - yellowish */
+   HEIGHT: 40px;
+   WIDTH: 100%;
+   TEXT-ALIGN: center;
+   BACKGROUND-COLOR: black;
+}
+
+DIV#anagrams TABLE
+{
+   BORDER: none;
+   WIDTH: 100%;
+   COLOR: #FFFF33; /* Font color - yellowish */
+   BACKGROUND-COLOR: black;
+   position: absolute;
+   top: 183px;
+   z-index: 9999;
+}
+
+
+DIV#anagrams TD
+{
+   BORDER: none;
+   MARGIN: 0;
+   PADDING: 1em; /* table 'cellpadding' */
+   COLOR: #FFFF33; /* Font color - yellowish */
+   WIDTH: 80%;
+}
+
+DIV#anagrams TH
+{
+   BORDER: none;
+   COLOR: #FFFF33; /* Font color - yellowish */
+   BACKGROUND-COLOR: black;
+   FONT-SIZE: 150%;
+   WIDTH: 20%;
+}
+</STYLE>
+
+<script SRC="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+
+
+<SCRIPT TYPE="text/javascript" SRC="datafiles/DAWG_SOWPODS_English_base64.js"></SCRIPT>
+
+
+<SCRIPT TYPE="text/javascript" SRC="js/UnScramble_bundle.js"></SCRIPT>
+
+<SCRIPT TYPE="text/javascript">
+
+var dictionary = 0;
+
+
+// A quasi enum to populate Select and find
+// out what was selected.
+optionEnum =
+{
+   MIDDLE : 0,
+   START : 1,
+   END : 2
+}
+
+var positionOptions =
+[
+   {
+      "text"     : "anywhere",
+      "value"    : optionEnum.MIDDLE,
+      "selected" : true
+   },
+   {
+      "text"  : "at beginning",
+      "value" : optionEnum.START,
+      "selected" : false
+   },
+   {
+      "text"  : "at end",
+      "value" : optionEnum.END,
+      "selected" : false
+   }
+];
+
+// CSS text-transform behaves funny
+function upperCaseKeyPress(a)
+{
+    setTimeout(function()
+    {
+        a.value = a.value.toUpperCase();
+    }, 1);
+}
+
+function clearSearchField()
+{
+   clearAnagramDisplay();
+   $("#search_field").val("");
+}
+
+function clearSearchFieldOfOnlyDefaultText()
+{
+   var currentText=$("#search_field").val();
+   if (currentText == DEFAULT_TEXT)
+      clearSearchField();
+
+}
+
+function clearMustContainField()
+{
+   $("#must_contain_field").val("");
+}
+
+function clearAnagramDisplay()
+{
+   $('#anagrams').html('');
+}
+
+function resetAll()
+{
+   clearMustContainField();
+   clearSearchField();
+}
+
+function findAnagramsRecursive(finalList, searchString, mustContain, numberOfWilds)
+{
+   // Quick check, should not happen
+   if (numberOfWilds >2)
+      return;
+
+    if (numberOfWilds <=0)
+    {
+      // get all the words first
+      var newWords = dictionary.FindAnagrams(searchString);
+
+      for (newWord of newWords)
+      {
+         // only those words that contain the exact letters
+         // are allowed
+         if (mustContain.length != 0)
+         {
+            var re=new RegExp(mustContain);
+            if (re.test(newWord) == false)
+            {
+               continue;
+            }
+         }
+
+         // only add words previously not found
+         if (finalList.indexOf(newWord) != -1)
+            continue;
+
+         finalList.push(newWord);
+
+      }
+
+   } else {
+
+      var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+      for (var wilds = numberOfWilds-1; wilds >= 0; wilds--)
+      {
+         for (var c = 0; c < alphabet.length; c++)
+         {
+            var newSearchText = searchString + alphabet[c];
+
+            // Since mustContain may be a regular expression
+            // We need to alter its wildcard too otherwise
+            // unwanted matches occur.
+            var dotIndex = mustContain.indexOf("\.");
+            var tmpMustContain = mustContain;
+
+            if (dotIndex != -1)
+            {
+               tmpMustContain = tmpMustContain.substr(0, dotIndex) +
+                 alphabet[c] +
+                 tmpMustContain.substr(dotIndex + 1);
+            }
+
+            finalList = findAnagramsRecursive(finalList, newSearchText, tmpMustContain, wilds);
+         }
+      }
+   }
+
+   return finalList;
+}
+
+function findAnagrams(searchString, mustContain, numberOfWilds)
+{
+   var finalList = [];
+
+   return findAnagramsRecursive(finalList, searchString, mustContain, numberOfWilds);
+}
+
+function parseInput()
+{
+   var searchString = $("#search_field").val();
+   var mustContain = $("#must_contain_field").val();
+
+   // Capitalize all input
+   searchString = searchString.toUpperCase();
+   mustContain = mustContain.toUpperCase();
+
+   // Replace all Question Marks with dots
+   searchString = searchString.replace(/\?/g,'.');
+   mustContain = mustContain.replace(/\?/g,'.');
+
+   // Count the number of WildCard characters
+   var numberOfSearchStringWilds = (searchString.split("\.").length - 1);
+   var numberOfMustContainWilds = (mustContain.split("\.").length - 1);
+   var numberOfWilds = numberOfSearchStringWilds + numberOfMustContainWilds;
+
+   if (numberOfWilds > 2)
+   {
+      alert("Sorry, no more than two wild card characters allowed");
+      return;
+   }
+
+   // Get rid of all funny characters
+   searchString=searchString.replace(/[^A-Z]/g, '');
+
+
+
+   // I like the behaviour where must contain is
+   // added to the text to find
+   searchString = searchString.concat(mustContain.replace(/[^A-Z]/g, ''));
+
+   // Get rid of all funny characters, except dot for regexp
+   mustContain = mustContain.replace(/[^A-Z\.]/g, '');
+
+
+   var positionSelectedIndex = (document.getElementById("position_select")).selectedIndex;
+
+   // Based on position_select, create the quasi regexp
+   // which can contain a dot for a wildcard.
+   // Note: nothing to do for the middle
+   if (positionSelectedIndex == optionEnum.START)
+      mustContain = "^" + mustContain ;
+   if (positionSelectedIndex == optionEnum.END)
+      mustContain = mustContain + "\$";
+
+
+   clearAnagramDisplay();
+
+   if (searchString.length <= 0)
+      return;
+
+
+
+   var anagrams = findAnagrams(searchString, mustContain, numberOfWilds);
+
+   displayAnagrams(anagrams, searchString, numberOfWilds);
+
+}
+
+function displayAnagrams(anagrams, searchString, numberOfWilds)
+{
+   if (anagrams.length == 0)
+      return;
+
+   var wordsByLength = [];
+   for (let i = 0; i < dictionary.MaxWordLength; i++)
+      wordsByLength.push([]);
+
+   for (let i = 0; i < anagrams.length; i++)
+   {
+      var word = anagrams[i];
+      wordsByLength[word.length].push(word);
+   }
+
+   var table = "<TABLE>";
+   table += '<CAPTION>Words Found</CAPTION>';
+
+   for (let i = dictionary.MaxWordLength - 1; i >= 2 ; i--)
+   {
+      var words = wordsByLength[i];
+
+      if (words.length <= 0)
+         continue;
+
+      table += "<TR>";
+
+      table += "<TH>" + i + "</TH>";
+
+      table += "<TD>";
+
+      for (let j = 0; j < words.length; j++)
+      {
+         var word = words[j];
+         var htmlWord = word;
+
+         // Check to see if the search string contained wild characters
+         if (numberOfWilds > 0)
+         {
+            // To beautify the output, we underline the specific
+            // letter that was used as a wildcard. Unfortunately
+            // we have to figure out what that was.
+
+            // So we split the word into individual letters
+            // to figure out if it is wild then reassemble it,
+            var wordAsArrayOfChars = word.split('');
+            htmlWord = "";
+            var wildCounter = numberOfWilds;
+
+            for (var letter of wordAsArrayOfChars)
+            {
+               var wildLetterCount = (word.split(letter).length - 1);
+
+               var letterCount = (searchString.split(letter).length - 1);
+
+               // If there are more n letters in
+               // the word found than in the searchString,
+               // then the character must be the wild
+               // card.
+
+               // There could be more than one wild card letter so
+               // replace up to numberOfWilds
+               if (wildCounter > 0 &&
+                  wildLetterCount > letterCount)
+               {
+                  htmlWord += '<U><FONT COLOR=white>' + letter + '</FONT></U><FONT COLOR=#FFFF33></FONT>';
+                  wildCounter -= 1;
+               } else {
+                  htmlWord += letter;
+               }
+            }
+         }
+
+         table += htmlWord;
+         if (j < (words.length - 1))
+         {
+            table += " - ";
+         }
+      }
+
+      table += "</TD>";
+      table += "<TR>";
+   }
+
+   table += "</TABLE>";
+
+   $('#anagrams').append(table);
+}
+
+$(document).ready(function()
+{
+
+   console.log("host is " + window.location.host);
+   dictionary = new window.UnScramble.Core.Dictionary("English");
+
+   // Get the position_select object.
+   var positionSelect = document.getElementById("position_select");
+
+   // Reset it to empty
+   positionSelect.options.length = 0;
+
+   // Add all the options, so it is a little more
+   // dynamic and less prone to finger failure.
+   for (option of positionOptions)
+   {
+      positionSelect.options[positionSelect.options.length] =
+         new Option(option.text, option.value, option.selected);
+   }
+});
+
+function init()
+{
+   // quit if this function has already been called
+   //if (arguments.callee.done) return;
+
+   // flag this function so we don't do the same thing twice
+   //arguments.callee.done = true;
+
+   dictionary = new window.UnScramble.Core.Dictionary("English");
+
+   $(document).ready(function()
+   {
+      // Get the position_select object.
+      var positionSelect = document.querySelector('#position_select');
+
+      // Reset it to empty
+      positionSelect.options.length = 0;
+
+      // Add all the options, so it is a little more
+      // dynamic and less prone to finger failure.
+      for (option of positionOptions)
+      {
+         positionSelect.options[positionSelect.options.length] =
+               new Option(option.text, option.value, option.selected);
+      }
+   });
+
+   $("#unScrambleForm")[0].reset();
+};
+
+window.onload = init;
+
+</SCRIPT>
+</HEAD>
+
+
+<BODY  ID=“body”>
+   <FORM id="unScrambleForm">
+   <DIV ID="title">UnScramble</DIV>
+   <DIV ID="letter"><a href="mailto:info@null.com?subject=Missing%20word%20in%20UnScramble%20Dictionary&body=Please%20add%20the%20missing%20word:%20" onmouseover="this.href=this.href.replace('null','beNiceGames')"><img src="images/Letter-30x20.png"></a>
+</DIV>
+
+   <!--main-->
+   <DIV ID="parms"></DIV>
+   <DIV ID="search"><INPUT ID="search_field" TYPE="text" VALUE="" SIZE=20 AUTOCAPITALIZE="off" AUTOCORRECT="off" AUTOCOMPLETE="off" PLACEHOLDER=" Letters - Enter &quot;?&quot; for blank letters" ONKEYUP="upperCaseKeyPress(this);" ONKEYDOWN="if (event.keyCode == 13) { parseInput(); }"></INPUT></DIV>
+   <DIV ID="parse"><INPUT TYPE="button" ID="parse_button" ONCLICK="parseInput();" VALUE="Submit"></INPUT></DIV>
+   <DIV ID="clear_search_field"><INPUT TYPE="button" ID="clear_search_field_button" VALUE="Clear" ONCLICK="clearSearchField();"></INPUT></DIV>
+
+   <DIV ID="must_contain"><INPUT ID="must_contain_field" TYPE="text" ONMOUSEDOWN="clearMustContainField();" VALUE="" SIZE="5" AUTOCAPITALIZE="off" AUTOCORRECT="off" AUTOCOMPLETE="off" PLACEHOLDER="Must Contain" ONKEYUP="upperCaseKeyPress(this);" ONKEYDOWN="if (event.keyCode == 13) { parseInput(); } "></INPUT></DIV>
+   <DIV ID="position"><SELECT ID="position_select">
+         <OPTION>Loading Dictionary...</OPTION>
+      </SELECT></DIV>
+
+   <DIV ID="clear_must_contain_field"><INPUT TYPE="button" ID="clear_must_contain_field_button" VALUE="Clear" ONCLICK="clearMustContainField();" ></INPUT></DIV>
+</DIV>
+
+
+   <DIV ID="anagrams" WIDTH="100%"></DIV>
+   <!--Oh so clean & fast-->
+</FORM></BODY>
+</HTML>

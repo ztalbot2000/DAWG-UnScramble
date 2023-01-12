@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": false,
+        "node": false,
+        "mocha": true
+    },
+    "globals": {
+       "window" : "writeable",
+       "document": "readable",
+       "base64Dict": "readable"
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+       "no-fallthrough": ["error", { "commentPattern": "break[\\s\\w]*omitted"}],
+       "no-whitespace-before-property": ["error"],
+       "arrow-spacing": ["error"]
+    },
+    "ignorePatterns": [
+       "*.[0-9]*"
+    ]
+}
